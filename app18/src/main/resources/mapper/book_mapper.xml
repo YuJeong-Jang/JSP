@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dbal.app.book.mapper.BookMapper">
+
+	<select id="getList"
+		parameterType="com.dbal.app.book.model.BookVO"
+		resultType="com.dbal.app.book.model.BookVO">
+		SELECT *
+		FROM BOOK_TBL_06
+	</select>
+	<select id="read" resultType="com.dbal.app.book.model.BookVO"
+		parameterType="com.dbal.app.book.model.BookVO">
+		<!-- 리턴타입을 보고 parameterType을 적어주면 된다 -->
+		<!-- #{}안에는 대소문자 구분 해줘야함 -->
+		SELECT *
+		FROM BOOK_TBL_06
+		WHERE
+		BOOK_NO = #{bookNo}
+	</select>
+
+	<insert id="insert">
+		<selectKey keyProperty="bookNo" resultType="int"
+			order="BEFORE">
+			SELECT max(BOOK_NO) +1 FROM BOOK_TBL_06
+		</selectKey>
+		INSERT INTO BOOK_TBL_06(BOOK_NO, BOOK_NAME, BOOK_COVERIMG, BOOK_DATE,
+		BOOK_PRICE, BOOK_PUBLISHER, BOOK_INFO)
+		VALUES(#{bookNo},
+		#{bookName},
+		#{bookCoverImg},
+		#{bookDate},
+		#{bookPrice},
+		#{bookPublisher},
+		#{bookInfo})
+	</insert>
+
+	<select id="getListAll"
+		parameterType="com.dbal.app.book.model.RentVO"	
+	resultType="com.dbal.app.book.model.RentVO">
+		select book_no, book_name, rent_price, rent_status
+		from
+		book_tbl_06 a join rent_tbl_06 b
+		where a.book_no = b.book_no
+		order by
+		a.book_no
+	</select>
+</mapper>
