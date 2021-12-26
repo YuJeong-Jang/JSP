@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration> <!-- 나중에 스프링을 쓰게 되면 이부분이 통째로 사라지고, 굉장히 간단하게 mybatis bean만 설정해주면 된다 -->
+	<properties resource="/db.properties">
+	</properties>
+	<typeAliases>
+		<typeAlias type="co.yj.prj.board.vo.SnsVO" alias="SnsVO" />
+		<typeAlias type="co.yj.prj.board.vo.CommentsVO"
+			alias="CommentsVO" />
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED"> <!-- 미리 커넥션을 여러개 만들어 놓고 들어오는 순서대로 관리해준다 -->
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${user}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers><!-- 실제 적용할 SQL 매퍼들의 집합 -->
+		<mapper resource="co/yj/prj/board/serviceImpl/board-map.xml" />
+		<!-- <package name="co.yj.prj" /> 베이스패키지까지만 입력해주면 그 하부에는 내가 어디에 mapper를 
+			생성해줬든지 간에 알아서 서치해준다. -->
+		<mapper resource="co/yj/prj/member/serviceImpl/member-map.xml" />
+	</mappers>
+
+</configuration>
