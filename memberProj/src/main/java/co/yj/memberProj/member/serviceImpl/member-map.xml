@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="co.yj.memberProj.member.service.MemberMapper">
+
+<select id="MemberSelectList" resultType="co.yj.memberProj.member.vo.MemberVO">
+select * from exam
+</select>
+
+<select id="MemberSelect" resultType="co.yj.memberProj.member.vo.MemberVO">
+select * from exam where email = #{email}
+</select>
+
+<insert id="memberInsert" parameterType="co.yj.memberProj.member.vo.MemberVO">
+insert into exam values(#{email}, #{name}, #{tel}, #{addr}, #{birth})
+</insert>
+
+<update id="memberUpdate" parameterType="co.yj.memberProj.member.vo.MemberVO">
+update exam set tel = #{tel}, addr = #{addr} where email = #{email}
+</update>
+
+<delete id="memberDelete" parameterType="co.yj.memberProj.member.vo.MemberVO">
+delete from exam where email = #{email}
+</delete>
+</mapper>
