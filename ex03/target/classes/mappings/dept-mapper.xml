@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yj.app.emp.mapper.DeptsMapper">
+
+	<select id="getDeptList" resultType="DeptsVO">
+		SELECT *
+		FROM DEPARTMENTS
+		ORDER BY DEPARTMENT_ID
+	</select>
+	
+	<select id="read" resultType="DeptsVO" parameterType="DeptsVO">
+		SELECT department_id, department_name
+		FROM departments
+		WHERE 
+		<choose>
+			<when test="departmentId != null and departmentId != '' ">
+				DEPARTMENT_ID = #{departmentId}
+			</when>
+			<otherwise>
+				DEPARTMENT_NAME = #{departmentName}
+			</otherwise>
+		</choose>
+	</select>
+</mapper>
