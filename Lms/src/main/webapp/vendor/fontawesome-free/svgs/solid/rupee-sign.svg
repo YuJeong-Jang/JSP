@@ -1,0 +1,9 @@
+>categoryTag:Debug</tags>
+  </descriptors>
+  <descriptors xmi:id="_GKLa0O6BEeu5NKZgLXG4bQ" elementId="org.eclipse.debug.ui.MemoryView" label="Memory" iconURI="platform:/plugin/org.eclipse.debug.ui/icons/full/eview16/memory_view.png" tooltip="" allowMultiple="true" category="Debug" closeable="true" contributionURI="bundleclass://org.eclipse.ui.workbench/org.eclipse.ui.internal.e4.compatibility.CompatibilityView">
+    <persistedState key="originalCompatibilityViewClass" value="org.eclipse.debug.internal.ui.views.memory.MemoryView"/>
+    <persistedState key="originalCompatibilityViewBundle" value="org.eclipse.debug.ui"/>
+    <tags>View</tags>
+    <tags>categoryTag:Debug</tags>
+  </descriptors>
+  <descriptors xmi:id="_GKLa0e6BEeu5NKZgLXG4bQ" elementId="org.eclipse.eclemma.ui.CoverageView" label="Coverage" iconURI="pl
